@@ -1,4 +1,4 @@
-namespace AutoPayOrganizer.Domain.Entities;
+namespace AutoPayOrganizer.API.Entities;
 
 public sealed class User
 {

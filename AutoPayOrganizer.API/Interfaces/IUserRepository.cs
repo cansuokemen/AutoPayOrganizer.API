@@ -1,6 +1,6 @@
-using AutoPayOrganizer.Domain.Entities;
+using AutoPayOrganizer.API.Entities;
 
-namespace AutoPayOrganizer.Application.Abstractions.Repositories;
+namespace AutoPayOrganizer.API.Interfaces;
 
 public interface IUserRepository
 {
