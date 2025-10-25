@@ -1,0 +1,11 @@
+{
+  "ConnectionStrings": {
+    "Default": "Host=localhost;Port=5432;Database=autopayorganizer;Username=postgres;Password=seninSifren"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  }
+}
