@@ -1,25 +1,27 @@
-﻿using AutoPayOrganizer.API.Data;
+﻿using Microsoft.AspNetCore.OpenApi;
+using Microsoft.AspNetCore.Builder;   
+using AutoPayOrganizer.API.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddOpenApi();
 
-// DbContext DI
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("Default")));
+{
+    options.UseNpgsql(builder.Configuration.GetConnectionString("Default"));
+});
 
 var app = builder.Build();
 
-app.UseSwagger();
-app.UseSwaggerUI(c =>
+if (app.Environment.IsDevelopment())
 {
-    c.SwaggerEndpoint("/swagger/v1/swagger.json", "AutoPayOrganizer API v1");
-});
+    app.MapOpenApi();          
+}
 
 app.UseHttpsRedirection();
-app.MapControllers();
-app.Run();
 
+app.MapControllers();
+
+app.Run();
