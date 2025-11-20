@@ -6,8 +6,7 @@ namespace AutoPayOrganizer.API.Data;
 public sealed class AppDbContext : DbContext
 {
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
-
-    // İsteğe bağlı: secret yoksa fallback
+    
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         if (optionsBuilder.IsConfigured) return;
@@ -34,9 +33,9 @@ public sealed class AppDbContext : DbContext
             e.Property(x => x.Title).IsRequired().HasMaxLength(200);
             e.Property(x => x.Amount).HasColumnType("numeric(18,2)");
 
-            // Payment.User ve Payment.UserId alanların olduğundan emin ol
+            
             e.HasOne(x => x.User)
-             .WithMany()                 // User tarafında koleksiyon yoksa böyle kalacak
+             .WithMany()                 
              .HasForeignKey(x => x.UserId)
              .OnDelete(DeleteBehavior.Cascade);
         });
@@ -46,8 +45,8 @@ public sealed class AppDbContext : DbContext
             e.HasKey(x => x.Id);
             e.Property(x => x.Category).IsRequired().HasMaxLength(100);
             e.Property(x => x.Amount).HasColumnType("numeric(18,2)");
-
-            // Expense.User ve Expense.UserId alanların olduğundan emin ol
+            
+            
             e.HasOne(x => x.User)
              .WithMany()
              .HasForeignKey(x => x.UserId)
