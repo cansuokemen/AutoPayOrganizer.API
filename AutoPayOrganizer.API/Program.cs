@@ -4,20 +4,21 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
 builder.Services.AddControllers();
+
 builder.Services.AddOpenApi();
 
+var connectionString = builder.Configuration.GetConnectionString("Default");
 builder.Services.AddDbContext<AppDbContext>(options =>
-{
-    options.UseNpgsql(builder.Configuration.GetConnectionString("Default"));
-});
+    options.UseNpgsql(connectionString));
 
 var app = builder.Build();
-
-app.MapOpenApi();   
 
 app.UseHttpsRedirection();
 
 app.MapControllers();
+
+app.MapOpenApi();
 
 app.Run();
