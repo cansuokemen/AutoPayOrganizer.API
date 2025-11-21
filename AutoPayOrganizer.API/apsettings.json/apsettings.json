@@ -1,11 +1,12 @@
 {
   "ConnectionStrings": {
-    "Default": "Host=localhost;Port=5432;Database=autopayorganizer;Username=postgres;Password=1189"
+    "Default": "Host=localhost;Port=5432;Database=autopaydb;Username=postgres;Password=1189"
   },
   "Logging": {
     "LogLevel": {
       "Default": "Information",
       "Microsoft.AspNetCore": "Warning"
     }
-  }
+  },
+  "AllowedHosts": "*"
 }

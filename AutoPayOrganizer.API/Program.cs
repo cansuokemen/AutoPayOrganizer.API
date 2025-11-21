@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.OpenApi;
-using Microsoft.AspNetCore.Builder;   
 using AutoPayOrganizer.API.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,10 +14,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.MapOpenApi();          
-}
+app.MapOpenApi();   
 
 app.UseHttpsRedirection();
 

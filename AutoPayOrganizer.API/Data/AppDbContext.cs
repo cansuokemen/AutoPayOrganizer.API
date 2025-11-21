@@ -10,8 +10,6 @@ public sealed class AppDbContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         if (optionsBuilder.IsConfigured) return;
-        const string cs = "Host=localhost;Port=5432;Database=autopaydb;Username=postgres;Password=1189";
-        optionsBuilder.UseNpgsql(cs);
     }
 
     public DbSet<User> Users => Set<User>();
